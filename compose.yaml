@@ -1,0 +1,28 @@
+services:
+  native-php-server:
+    build:
+      context: .
+      dockerfile: dockerfiles/nginx.dockerfile
+    restart: always
+    ports:
+      - '14000:14000'
+    networks:
+      - demo_app
+    volumes:
+      - ./src:/var/www/html:delegated
+    depends_on:
+      - php
+  php:
+    build:
+      context: .
+      dockerfile: dockerfiles/php.dockerfile
+    restart: always
+    networks:
+      - demo_app
+    volumes:
+      - ./src:/var/www/html:delegated
+networks:
+  demo_app:
+    name: demo_app
+volumes:
+  src:
