@@ -1,0 +1,11 @@
+{
+    "name": "demo/php-app",
+    "require": {
+        "guzzlehttp/guzzle": "^7.9"
+    },
+    "autoload": {
+        "psr-4": {
+            "Demo\\PhpApp\\": "src/"
+        }
+    }
+}
